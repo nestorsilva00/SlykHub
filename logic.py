@@ -1,4 +1,3 @@
-from requests import api
 import api as API
 import requests
 from threading import Thread
