@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/css.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/jquery.datatable.min.css')}}">
+ 
+    <script type="text/javascript" charset="utf8" src="{{url_for('static', filename='js/site2b77.js')}}"></script>
+    <script type="text/javascript" charset="utf8" src="{{url_for('static', filename='js/jquery-3.5.1.js')}}"></script>
+    <script type="text/javascript" charset="utf8" src="{{url_for('static', filename='js/jquery.dataTables.min.js')}}"></script>
+    <script type="text/javascript" charset="utf8" src="{{url_for('static', filename='js/demo.js')}}"></script>
+    <script type="text/javascript" class="init">
+	
+
+        $(document).ready(function() {
+            $('#example').DataTable();
+        } );
+        
+        
+            </script>
+    <title>Document</title>
+</head>
+<body>
+	<div id="loading"></div>
+    <div class="demo-html">
+        
+			
+			<div class="form">
+				<form action="/update_users" method="post">
+					<input type="text" name="apikey" placeholder="Put your API key here" >
+					<input type="submit" value="Actualizar datos" onclick="loading();">
+					
+				</form>
+			</div>
+			
+        <table id="example" class="display dataTable" style="width: 100%;" aria-describedby="example_info">
+            <thead>
+                <tr>
+                    <th class="sorting sorting_asc" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 81px;">Usuario</th>
+                    <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 120px;">Teléfono</th>
+                    <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 63px;">Email</th>
+                   
+					{% set count = namespace(value=4) %}
+								{% for asset in assets.data %}
+						<th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Balance {{asset.assetCode}}: activate to sort column ascending" style="width: 28px;">Balance {{asset.assetCode}}</th>	
+								
+									{% set count = count.value + 1 %}
+								{% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+
+							
+				{% for user in user_data %}
+							<tr class="odd">
+								<td class="sorting_1">{{user.user_data.data.name}}</td>
+								<td>{{user.user_data.data.phone}}</td>
+								<td>{{user.user_data.data.email}}</td>
+						
+								{% for i in  user.wallet_data.data %}
+									
+								<td>
+									{{i.amount}}
+								</td>
+								
+	
+								{% endfor %}
+								
+							</tr>
+							{% endfor %}
+
+						
+
+							
+                            
+                        </tbody>
+						<tfoot>
+							<tr>
+								<th class="sorting sorting_asc" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 81px;">Usuario</th>
+								<th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 120px;">Teléfono</th>
+								<th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 63px;">Email</th>
+								
+								{% set count = namespace(value=4) %}
+											{% for asset in assets.data %}
+									<th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Balance {{asset.assetCode}}: activate to sort column ascending" style="width: 28px;">Balance {{asset.assetCode}}</th>	
+											
+												{% set count = count.value + 1 %}
+											{% endfor %}
+							</tr>
+						</tfoot>
+					
+				</div>
+
+				<script type="text/javascript">// <![CDATA[¨
+
+				function loading(){
+            		$("#loading").show();
+            		      
+        			}
+					function preloader(){
+						$("#loading").hide();
+						
+					}//preloader
+					window.onload = preloader;
+			// ]]></script>
+</body>
+</html>
