@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/css.css')}}">
     <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/jquery.datatable.min.css')}}">
- 
+	<link rel="shortcut icon" href="{{url_for('static', filename='images/icons/slyklogo.ico')}}" type="image/x-icon">
+
     <script type="text/javascript" charset="utf8" src="{{url_for('static', filename='js/site2b77.js')}}"></script>
     <script type="text/javascript" charset="utf8" src="{{url_for('static', filename='js/jquery-3.5.1.js')}}"></script>
     <script type="text/javascript" charset="utf8" src="{{url_for('static', filename='js/jquery.dataTables.min.js')}}"></script>
@@ -20,7 +21,7 @@
         
         
             </script>
-    <title>Document</title>
+    <title>Slyk Leadboard</title>
 </head>
 <body>
 	<div id="loading"></div>
@@ -55,9 +56,9 @@
 							
 				{% for user in user_data %}
 							<tr class="odd">
-								<td class="sorting_1">{{user.user_data.data.name}}</td>
-								<td>{{user.user_data.data.phone}}</td>
-								<td>{{user.user_data.data.email}}</td>
+								<td class="sorting_1">{{user.user_data.name}}</td>
+								<td>{{user.user_data.phone}}</td>
+								<td>{{user.user_data.email}}</td>
 						
 								{% for i in  user.wallet_data.data %}
 									
