@@ -1,7 +1,6 @@
-import json
 from flask import Flask, render_template, request, redirect, url_for, flash
 import logic as App_logic
-import pandas as pd
+
 app = Flask(__name__)
 
 
