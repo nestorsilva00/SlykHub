@@ -1,5 +1,6 @@
-from flask import Flask, render_template, request, redirect, url_for, flash
-import logic as App_logic
+from flask import Flask, render_template, request
+import api
+from modules.user import logic as app_logic
 
 app = Flask(__name__)
 
@@ -7,17 +8,17 @@ app = Flask(__name__)
 @app.route('/', methods=['GET', 'POST'])
 def users_new_table():
     assets = None
-    return render_template('table.html', assets=assets)
+    return render_template('users_balance_table.html', assets=assets)
 
 @app.route('/update_users', methods=['GET', 'POST'])
 def update_users_table():
     apikey = request.form['apikey']
     try:
-        data = App_logic.get_users_data(apikey)
-        assets = App_logic.get_wallets_balance(apikey)
+        data = app_logic.get_users_balance_data(apikey)
+        assets = api.get_wallets_balance(apikey)
     except Exception as e:
         print(e)
-    return render_template('table.html', user_data=data, assets=assets)
+    return render_template('users_balance_table.html', user_data=data, assets=assets)
 
 @app.errorhandler(500)
 def page_not_found(e):
