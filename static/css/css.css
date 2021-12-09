@@ -50,6 +50,26 @@ body{
     padding-top: 100px;
 }
 
+#csvdownload{
+    padding: 7.7px;
+    margin-left: 30px;
+    margin-top: 20px;
+    border: none;    
+    background: #36304A;
+    color: white;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    font-size: 15.3px;
+    border-radius: 5px;
+}
+
+#csvdownload:hover{   
+    color: #36304A;
+    background: white;
+
+}
+
+
 .home-link{
     border: none;    
     border-radius: 4px;
@@ -836,6 +856,7 @@ ul.blog_link_list span {
 .form{
     padding-top: 20px;
     padding-left: 70px;
+    float: left;
 }
 
 div#loading{
@@ -859,6 +880,7 @@ div#loading{
     color: white;
     transition: all 0.3s ease-in-out;
     cursor: pointer;
+    font-size: 15.3px;
 
 }
 .form form input[type=submit]:hover{   
