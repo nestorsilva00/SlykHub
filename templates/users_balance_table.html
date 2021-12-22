@@ -22,7 +22,7 @@
         
         
             </script>
-    <title>Slyk Leadboard</title>
+    <title>SlykHub</title>
 </head>
 <body>
 	<div id="loading"></div>
@@ -37,6 +37,9 @@
 				</form>
 			</div>
 			<button id="csvdownload">Exportar página actual a CSV</button>
+
+			
+			
         <table id="example" class="display dataTable" style="width: 100%;" aria-describedby="example_info">
             <thead>
                 <tr>
@@ -46,14 +49,15 @@
                    
 					{% set count = namespace(value=4) %}
 								{% for asset in assets.data %}
-						<th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Balance {{asset.assetCode}}: activate to sort column ascending" style="width: 28px;">Balance {{asset.assetCode}}</th>	
+						<th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Balance {{asset.assetCode}}: activate to sort column ascending" style="width: 28px;">Balance acutal{{asset.assetCode}}</th>	
 								
 									{% set count = count.value + 1 %}
 								{% endfor %}
+
+					
                 </tr>
             </thead>
             <tbody>
-
 							
 				{% for user in user_data %}
 							<tr class="odd">
@@ -64,7 +68,7 @@
 								{% for i in  user.wallet_data.data %}
 									
 								<td>
-									{{i.amount}}
+									{{i.amount|float |round(2)}}
 								</td>
 								
 	
@@ -75,10 +79,9 @@
 
 						
 
-							
-                            
-                        </tbody>
-						<tfoot>
+							  
+            </tbody>
+			<tfoot>
 							<tr>
 								<th class="sorting sorting_asc" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 81px;">Usuario</th>
 								<th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 120px;">Teléfono</th>
@@ -91,9 +94,55 @@
 												{% set count = count.value + 1 %}
 											{% endfor %}
 							</tr>
-						</tfoot>
-					
-				</div>
+			</tfoot>
+		</table>
+
+		<table class="display dataTable total-balance-table">
+			<thead>
+				<tr>
+					{% set count = namespace(value=4) %}
+								{% for asset in assets.data %}
+						<th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Balance {{asset.assetCode}}: activate to sort column ascending" style="width: 28px;">Balance total actual {{asset.assetCode}}</th>	
+								
+									{% set count = count.value + 1 %}
+								{% endfor %}
+								{% set count = namespace(value=4) %}
+								{% for asset in assets.data %}
+						<th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Balance {{asset.assetCode}}: activate to sort column ascending" style="width: 28px;">Balance total histórico {{asset.assetCode}}</th>	
+								
+									{% set count = count.value + 1 %}
+								{% endfor %}
+				</tr>
+			</thead>
+
+			<tbody>
+				<tr>
+				{% for i in  current_balance.data %}
+									
+								<td>
+									{{i.amount|float |round(2)}}
+								</td>
+								
+	
+								{% endfor %}
+
+				{% for i in  assets.data %}
+									
+								<td>
+									{{i.amount|float |round(2)}}
+								</td>
+								
+	
+								{% endfor %}
+
+							</tr>
+			</tbody>
+		</table>
+		
+		
+	</div>
+
+				
 
 				<script type="text/javascript">// <![CDATA[¨
 
@@ -117,4 +166,9 @@
 				})
 			</script>
 </body>
+
+<footer> 
+	<p>Powered by Slyk.io</p> 
+</footer>
+
 </html>

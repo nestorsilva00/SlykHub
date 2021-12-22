@@ -133,7 +133,10 @@ table td{
   tr.even:hover td {
     background: #EAEAEA;
   }
-
+.total-balance-table{
+    width: 90% !important;
+    margin-top: 15px !important;    
+}
 
 
 fieldset, img {
@@ -1667,6 +1670,23 @@ body.wide div.fw-page-nav {
 div.mobile-show {
     display: none;
 }
+
+footer{
+    position: fixed;
+            padding: 10px 10px 0px 10px;
+            bottom: 0;
+            width: 100%;
+            /* Height of the footer*/ 
+            height: 40px;
+            background: #36304A;
+            color: #fff;
+            text-align: center;
+            font-size: 1.3em;
+           padding-top: 10px;
+}
+
+
+
 @media only screen and (max-width: 1070px) {
     div.fw-container div.fw-header div.nav-search input {
     width: 150px;

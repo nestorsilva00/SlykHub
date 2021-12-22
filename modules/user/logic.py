@@ -35,3 +35,16 @@ def get_final_data(wallets, users, assets):
                 })
     return final_data
 #-----------------------------------------------------------------------#
+
+#----------------Obtaining current total balance-------------------------#
+
+def get_current_total_balance_for_asset(users_data, assets):
+    total_balance = {'data':[]}
+    for asset in assets['data']:
+        total_balance['data'].append({'assetCode':asset['assetCode'], 'amount':0})
+    for user in users_data:
+        for asset in total_balance['data']:
+            for wallet in user['wallet_data']['data']:
+                if(wallet['assetCode'] == asset['assetCode']):
+                    asset['amount'] += float(wallet['amount'])
+    return total_balance
