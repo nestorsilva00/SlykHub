@@ -41,3 +41,7 @@ def page_not_found(e):
     error_type = "400 Bad Request"
     error_message = "Debe introducir su API Key"
     return render_template('error.html', error_message=error_message, error_type=error_type), 500
+
+
+if __name__ == '__main__':
+    app.run()
