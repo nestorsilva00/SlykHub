@@ -1,5 +1,5 @@
-import api as API
-from auxiliary import check_key_value_in_dict_list, threaded_process_range
+import slykdashboard.api as API
+from slykdashboard.auxiliary import check_key_value_in_dict_list, threaded_process_range
 
 #----------------Obtaining users balance data-------------------------#
 
@@ -48,3 +48,11 @@ def get_current_total_balance_for_asset(users_data, assets):
                 if(wallet['assetCode'] == asset['assetCode']):
                     asset['amount'] += float(wallet['amount'])
     return total_balance
+#-----------------------------------------------------------------------#
+
+
+#----------------Obtaining historical total balance-------------------------#
+def get_wallets_balance(apikey):
+    wallets = API.get_wallets_balance(apikey)
+    return wallets
+#-----------------------------------------------------------------------#

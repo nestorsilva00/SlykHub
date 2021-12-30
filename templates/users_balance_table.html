@@ -49,7 +49,7 @@
                    
 					{% set count = namespace(value=4) %}
 								{% for asset in assets.data %}
-						<th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Balance {{asset.assetCode}}: activate to sort column ascending" style="width: 28px;">Balance acutal{{asset.assetCode}}</th>	
+						<th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Balance {{asset.assetCode}}: activate to sort column ascending" style="width: 28px;">Balance actual {{asset.assetCode}}</th>	
 								
 									{% set count = count.value + 1 %}
 								{% endfor %}
