@@ -1,5 +1,5 @@
-import slykdashboard.api as API
-from slykdashboard.auxiliary import check_key_value_in_dict_list, threaded_process_range
+import slykhub.api as API
+from slykhub.auxiliary import check_key_value_in_dict_list, threaded_process_range
 
 #----------------Obtaining users balance data-------------------------#
 

@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request
-import slykdashboard.user.logic as app_logic
+import slykhub.user.logic as app_logic
 
 
 users = Blueprint('users', __name__)
