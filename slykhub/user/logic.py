@@ -13,7 +13,10 @@ def get_users_balance_data(apikey):
     users = API.get_users(apikey)
     wallets= wallets['data']
     request_url = "https://api.slyk.io/wallets/id"
-    wallets_data  =  threaded_process_range(len(wallets_ids), wallets_ids, apikey, request_url)
+    if len(wallets_ids) <=100:
+        wallets_data  =  threaded_process_range(len(wallets_ids), wallets_ids, apikey, request_url)
+    else:
+        wallets_data  =  threaded_process_range(100, wallets_ids, apikey, request_url)
     print("wallets data"+str(len(wallets_data)))
     final_data = get_final_data(wallets_data, users, assets)
     return  final_data
