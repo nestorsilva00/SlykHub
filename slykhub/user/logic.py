@@ -6,7 +6,7 @@ from slykhub.auxiliary import check_key_value_in_dict_list, threaded_process_ran
 #process users and walllets data and return final data to be show in table
 def get_users_balance_data(apikey):
     assets = API.get_wallets_balance(apikey)
-    wallets = API.get_wallets(apikey)
+    wallets = API.get_wallets_by_page(apikey)
     wallets_ids = []
     for i in wallets['data']:
         wallets_ids.append({'id':str(i['id']), 'ownerId':i['ownerId']})
@@ -14,6 +14,7 @@ def get_users_balance_data(apikey):
     wallets= wallets['data']
     request_url = "https://api.slyk.io/wallets/id"
     wallets_data  =  threaded_process_range(len(wallets_ids), wallets_ids, apikey, request_url)
+    print("wallets data"+str(len(wallets_data)))
     final_data = get_final_data(wallets_data, users, assets)
     return  final_data
     

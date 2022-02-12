@@ -97,7 +97,26 @@ def get_wallets(apikey, url="https://api.slyk.io/wallets?page[size]=100&sorted=c
         except HTTPError as e:
             print(e)
     return return_data
+
+#return a list of all wallets for an indicated page
+def get_wallets_by_page(apikey, url="https://api.slyk.io/wallets?page[size]=100&sorted=createdAt"):
+    return_data = {}
+    try:
+            req = Request(url+"page[size]=1", headers={'User-Agent': 'Mozilla/5.0', 'apiKey': apikey})
+            data = urllib.request.urlopen(req, timeout = 100)
+            json_data = json.loads(data.read())
+            return_data = json_data
+            total_rows = json_data['total']
+    except error as e:
+            print(e)
     
+    except HTTPError as e:
+            print(e)
+        
+
+    return return_data
+
+
 #return total balance of all wallets of the slyk for each existing asset       
 def get_wallets_balance(apikey, url="https://api.slyk.io/wallets/balance"):
     try:
